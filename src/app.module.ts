@@ -4,7 +4,7 @@ import { ContentController } from '@src/http/rest/controller/content.controller'
 import { ContentManagementService } from '@src/core/service/content-management.service';
 import { MediaPlayerService } from '@src/core/service/media-player.service';
 
-import { PrismaService } from '@src/prisma.service';
+import { PrismaService } from '@src/persistance/prisma/prisma.service';
 
 @Module({
   imports: [],
