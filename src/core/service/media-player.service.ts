@@ -16,6 +16,6 @@ export class MediaPlayerService {
     if (!video)
       throw new VideoNotFoundException(`Video with id ${videoId} not found`);
 
-    return video?.url;
+    return video.url;
   }
 }
