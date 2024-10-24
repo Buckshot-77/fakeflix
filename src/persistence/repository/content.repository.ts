@@ -76,6 +76,14 @@ export class ContentRepository {
     }
   }
 
+  async clear(): Promise<{ count: number }> {
+    try {
+      return await this.model.deleteMany();
+    } catch (error) {
+      this.handleAndThrowError(error);
+    }
+  }
+
   private mapToEntity<
     T extends Prisma.ContentGetPayload<{
       include: typeof contentInclude;
@@ -145,10 +153,10 @@ export class ContentRepository {
     return 'An unexpected error occurred.';
   }
   protected handleAndThrowError(error: unknown): never {
-    const errorMessage = this.extractErrorMessage(error);
     if (error instanceof Prisma.PrismaClientValidationError) {
       throw new Error(error.message);
     }
+    const errorMessage = this.extractErrorMessage(error);
 
     throw new Error(errorMessage);
   }
