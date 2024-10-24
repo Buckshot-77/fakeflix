@@ -1,5 +1,7 @@
 Um projeto desenvolvido no curso Fundamentos do Desenvolvimento de Software Enterprise, do Techleads Club, pelo instrutor Waldemar Neto.
 
+Essa versão do projeto é uma versão deliberadamente overengineered, tentando aplicar bastante de DDD num contexto de escala que ainda não justifica.
+
 
 
 <p align="center">
