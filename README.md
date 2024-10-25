@@ -1,6 +1,6 @@
 Um projeto desenvolvido no curso Fundamentos do Desenvolvimento de Software Enterprise, do Techleads Club, pelo instrutor Waldemar Neto.
 
-Essa versão do projeto é uma versão deliberadamente overengineered, tentando aplicar bastante de DDD num contexto de escala que ainda não justifica.
+Essa versão do projeto será a versão com um bom balanceamento entre práticas de Clean Code e acoplamento calculado. O objetivo é fazer uma comparação entre esta versão, e a versão da branch overengineered-version
 
 
 
