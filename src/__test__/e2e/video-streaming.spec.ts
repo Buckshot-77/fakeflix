@@ -11,7 +11,6 @@ describe('ContentController (e2e)', () => {
   let app: INestApplication;
   let videoRepository: VideoRepository;
   let contentManagementService: ContentManagementService;
-  const dir = './uploads';
 
   beforeAll(async () => {
     module = await Test.createTestingModule({
@@ -28,9 +27,6 @@ describe('ContentController (e2e)', () => {
   });
 
   beforeEach(async () => {
-    if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir);
-    }
     jest
       .useFakeTimers({ advanceTimers: true })
       .setSystemTime(new Date('2023-01-01'));
