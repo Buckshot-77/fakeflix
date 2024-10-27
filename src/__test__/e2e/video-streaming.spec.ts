@@ -2,6 +2,7 @@ import fs from 'fs';
 import request from 'supertest';
 import { HttpStatus, INestApplication } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
+import nock from 'nock';
 
 import { AppModule } from '@src/app.module';
 import { ContentManagementService } from '@src/core/service/content-management.service';
@@ -43,6 +44,7 @@ describe('ContentController (e2e)', () => {
     await videoRepository.deleteAll();
     await movieRepository.deleteAll();
     await contentRepository.deleteAll();
+    nock.cleanAll();
   });
 
   afterAll(async () => {
@@ -52,6 +54,44 @@ describe('ContentController (e2e)', () => {
 
   describe('GET /stream/:videoId', () => {
     it('streams a video', async () => {
+      nock('https://api.themoviedb.org/3', {
+        encodedQueryParams: true,
+        reqheaders: {
+          Authorization: (): boolean => true,
+        },
+      })
+        .defaultReplyHeaders({ 'access-control-allow-origin': '*' })
+        .get(`/search/keyword`)
+        .query({
+          query: 'Test Video',
+          page: '1',
+        })
+        .reply(200, {
+          results: [
+            {
+              id: '1',
+            },
+          ],
+        });
+
+      nock('https://api.themoviedb.org/3', {
+        encodedQueryParams: true,
+        reqheaders: {
+          Authorization: (): boolean => true,
+        },
+      })
+        .defaultReplyHeaders({ 'access-control-allow-origin': '*' })
+        .get(`discover/movie`)
+        .query({
+          with_keywords: '1',
+        })
+        .reply(200, {
+          results: [
+            {
+              vote_average: 8.5,
+            },
+          ],
+        });
       const createdMovie = await contentManagementService.createMovie({
         title: 'Test Video',
         description: 'This is a test video',
