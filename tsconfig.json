@@ -24,6 +24,9 @@
     "noUnusedParameters": true,
     "outDir": "./dist",
     "paths": {
+      "@contentModule/*": [
+        "./src/module/content/*"
+      ],
       "@src/*": [
         "./src/*"
       ],
