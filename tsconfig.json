@@ -27,6 +27,9 @@
       "@contentModule/*": [
         "./src/module/content/*"
       ],
+      "@sharedModules/*": [
+        "./src/module/shared/module/*"
+      ],
       "@src/*": [
         "./src/*"
       ],

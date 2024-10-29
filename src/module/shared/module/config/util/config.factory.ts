@@ -1,6 +1,6 @@
-import { ConfigException } from '@contentModule/infra/module/config/exception/config.exception';
-import { configSchema } from '@contentModule/infra/module/config/util/config.schema';
-import { Config } from '@contentModule/infra/module/config/util/config.type';
+import { ConfigException } from '@sharedModules/config/exception/config.exception';
+import { configSchema } from '@sharedModules/config/util/config.schema';
+import { Config } from '@sharedModules/config/util/config.type';
 
 export const factory = (): Config => {
   const result = configSchema.safeParse({

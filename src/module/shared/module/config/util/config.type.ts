@@ -3,7 +3,7 @@ import { z } from 'zod';
 import {
   configSchema,
   environmentSchema,
-} from '@contentModule/infra/module/config/util/config.schema';
+} from '@sharedModules/config/util/config.schema';
 
 export type Environment = z.infer<typeof environmentSchema>;
 
