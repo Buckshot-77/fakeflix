@@ -1,8 +1,9 @@
+import argon2 from 'argon2';
 import { Injectable } from '@nestjs/common';
+
 import { UserModel } from '@identityModule/core/model/user.model';
 import { UserRepository } from '@identityModule/persistence/repository/user.repository';
-import bcrypt from 'bcrypt';
-import { DomainException } from '@sharedLibs/core/exeption/domain.exception';
+import { DomainException } from '@sharedLibs/core/exception/domain.exception';
 
 export interface CreateUserDto {
   email: string;
@@ -23,7 +24,7 @@ export class UserManagementService {
     }
     const newUser = UserModel.create({
       ...user,
-      password: await bcrypt.hash(user.password, PASSWORD_HASH_SALT),
+      password: await argon2.hash(user.password, { salt: PASSWORD_HASH_SALT }),
     });
     await this.userRepository.save(newUser);
     return newUser;
