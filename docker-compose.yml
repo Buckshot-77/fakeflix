@@ -2,13 +2,26 @@ name: 'fakeflix'
 
 services:
   db:
-    image: postgres:15-alpine
+    image: bitnami/postgresql:latest
     container_name: fakeflix-db
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=fakeflix_dev
     ports:
-      - '5432:5432'
+      - 5432:5432
+    env_file:
+      - .env
     volumes:
       - .data:/var/lib/postgresql/data
+    profiles:
+      - dev
+      - prod
+
+  test_db:
+    image: bitnami/postgresql:latest
+    container_name: fakeflix-test-db
+    ports:
+      - 5433:5433
+    env_file:
+      - .env.test
+    volumes:
+      - .data:/var/lib/postgresql/data
+    profiles:
+      - test

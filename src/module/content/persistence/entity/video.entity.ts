@@ -1,6 +1,6 @@
 import { Column, Entity, JoinColumn, OneToOne } from 'typeorm';
-import { Episode } from '@contentModule/persistence/entity/episode.entity';
-import { Movie } from '@contentModule/persistence/entity/movie.entity';
+import { Episode } from './episode.entity';
+import { Movie } from './movie.entity';
 import { DefaultEntity } from '@contentModule/infra/module/typeorm/entity/default.entity';
 
 @Entity({ name: 'Video' })

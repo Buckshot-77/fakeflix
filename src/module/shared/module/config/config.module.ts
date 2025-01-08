@@ -4,7 +4,7 @@ import {
   ConfigModule as NestConfigModule,
   ConfigModuleOptions as NestConfigModuleOptions,
 } from '@nestjs/config';
-import { ConfigService } from '@sharedModules/config/service/config.service';
+import { ConfigService } from './service/config.service';
 import { factory } from '@sharedModules/config/util/config.factory';
 
 export class ConfigModule {

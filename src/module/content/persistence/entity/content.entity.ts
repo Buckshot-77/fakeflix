@@ -1,6 +1,6 @@
 import { Column, Entity, OneToOne } from 'typeorm';
-import { Movie } from '@contentModule/persistence/entity/movie.entity';
-import { TvShow } from '@contentModule/persistence/entity/tv-show.entity';
+import { Movie } from './movie.entity';
+import { TvShow } from './tv-show.entity';
 import { DefaultEntity } from '@contentModule/infra/module/typeorm/entity/default.entity';
 import { ContentType } from '@contentModule/core/enum/content-type.enum';
 

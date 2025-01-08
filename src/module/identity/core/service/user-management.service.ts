@@ -1,11 +1,10 @@
-import argon2 from 'argon2';
 import { Injectable } from '@nestjs/common';
-
 import { UserModel } from '@identityModule/core/model/user.model';
 import { UserRepository } from '@identityModule/persistence/repository/user.repository';
-import { DomainException } from '@sharedLibs/core/exception/domain.exception';
+import argon2 from 'argon2';
+import { DomainException } from '@sharedLibs/core/exeption/domain.exception';
 
-export interface CreateUserDto {
+export interface CreateUserDTO {
   email: string;
   password: string;
   firstName: string;
@@ -18,13 +17,17 @@ export const PASSWORD_HASH_SALT = 10;
 @Injectable()
 export class UserManagementService {
   constructor(private readonly userRepository: UserRepository) {}
-  async create(user: CreateUserDto) {
+  async create(user: CreateUserDTO) {
     if (!this.validateEmail(user.email)) {
       throw new DomainException(`Invalid email: ${user.email}`);
     }
+    const passwordHash = await argon2.hash(user.password, {
+      salt: PASSWORD_HASH_SALT,
+    });
+    console.log(passwordHash);
     const newUser = UserModel.create({
       ...user,
-      password: await argon2.hash(user.password, { salt: PASSWORD_HASH_SALT }),
+      password: passwordHash,
     });
     await this.userRepository.save(newUser);
     return newUser;

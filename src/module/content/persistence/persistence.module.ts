@@ -1,13 +1,13 @@
 import { DynamicModule, Module } from '@nestjs/common';
-import { Content } from '@contentModule/persistence/entity/content.entity';
-import { Episode } from '@contentModule/persistence/entity/episode.entity';
-import { Movie } from '@contentModule/persistence/entity/movie.entity';
-import { Thumbnail } from '@contentModule/persistence/entity/thumbnail.entity';
-import { TvShow } from '@contentModule/persistence/entity/tv-show.entity';
-import { Video } from '@contentModule/persistence/entity/video.entity';
-import { ContentRepository } from '@contentModule/persistence/repository/content.repository';
-import { MovieRepository } from '@contentModule/persistence/repository/movie.repository';
-import { VideoRepository } from '@contentModule/persistence/repository/video.repository';
+import { Content } from './entity/content.entity';
+import { Episode } from './entity/episode.entity';
+import { Movie } from './entity/movie.entity';
+import { Thumbnail } from './entity/thumbnail.entity';
+import { TvShow } from './entity/tv-show.entity';
+import { Video } from './entity/video.entity';
+import { ContentRepository } from './repository/content.repository';
+import { MovieRepository } from './repository/movie.repository';
+import { VideoRepository } from './repository/video.repository';
 import { TypeOrmPersistenceModule } from '@contentModule/infra/module/typeorm/typeorm-persistence.module';
 
 @Module({})

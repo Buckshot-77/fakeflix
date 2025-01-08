@@ -11,6 +11,7 @@ import {
 } from '@nestjs/common';
 import { FileFieldsInterceptor } from '@nestjs/platform-express';
 import { ContentManagementService } from '@contentModule/core/service/content-management.service';
+import { MediaPlayerService } from '@contentModule/core/service/media-player.service';
 import { CreateVideoResponseDTO } from '@contentModule/http/rest/dto/response/create-video-response.dto';
 import { RestResponseInterceptor } from '@contentModule/http/rest/interceptor/rest-response.interceptor';
 import { randomUUID } from 'crypto';
@@ -22,6 +23,7 @@ import { extname } from 'path';
 export class VideoUploadController {
   constructor(
     private readonly contentManagementService: ContentManagementService,
+    private readonly mediaPlayerService: MediaPlayerService,
   ) {}
 
   @Post('video')

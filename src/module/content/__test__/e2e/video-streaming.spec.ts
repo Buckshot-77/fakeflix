@@ -1,14 +1,14 @@
-import fs from 'fs';
-import request from 'supertest';
 import { HttpStatus, INestApplication } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
-import nock from 'nock';
-
 import { AppModule } from '@src/app.module';
 import { ContentManagementService } from '@contentModule/core/service/content-management.service';
-import { ContentRepository } from '@contentModule/persistence/repository/content.repository';
-import { MovieRepository } from '@contentModule/persistence/repository/movie.repository';
+
+import fs from 'fs';
+import request from 'supertest';
+import nock from 'nock';
 import { VideoRepository } from '@contentModule/persistence/repository/video.repository';
+import { MovieRepository } from '@contentModule/persistence/repository/movie.repository';
+import { ContentRepository } from '@contentModule/persistence/repository/content.repository';
 
 describe('ContentController (e2e)', () => {
   let module: TestingModule;

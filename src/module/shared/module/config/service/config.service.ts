@@ -5,7 +5,7 @@ import {
   Path,
   PathValue,
 } from '@nestjs/config';
-import { Config } from '@sharedModules/config/util/config.type';
+import { Config } from '../util/config.type';
 
 /**
  * This service extends the NestConfigService to enforce `WasValidated` to be

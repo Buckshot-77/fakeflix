@@ -24,6 +24,14 @@ export class CreateVideoResponseDTO {
   @Expose()
   url: string;
 
+  @IsDate()
+  @Expose()
+  createdAt: Date;
+
+  @IsDate()
+  @Expose()
+  updatedAt: Date;
+
   @IsString()
   @Expose()
   @IsOptional()
@@ -36,12 +44,4 @@ export class CreateVideoResponseDTO {
   @IsNumber()
   @Expose()
   duration: number;
-
-  @IsDate()
-  @Expose()
-  createdAt: Date;
-
-  @IsDate()
-  @Expose()
-  updatedAt: Date;
 }

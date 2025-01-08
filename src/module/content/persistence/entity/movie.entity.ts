@@ -1,6 +1,6 @@
 import { Column, Entity, JoinColumn, OneToOne } from 'typeorm';
-import { Content } from '@contentModule/persistence/entity/content.entity';
-import { Video } from '@contentModule/persistence/entity/video.entity';
+import { Content } from './content.entity';
+import { Video } from './video.entity';
 import { DefaultEntity } from '@contentModule/infra/module/typeorm/entity/default.entity';
 import { Thumbnail } from '@contentModule/persistence/entity/thumbnail.entity';
 
@@ -11,6 +11,9 @@ export class Movie extends DefaultEntity<Movie> {
   })
   video: Video;
 
+  @Column({ type: 'float', nullable: true })
+  externalRating: number | null;
+
   @OneToOne(() => Content, (content) => content.movie)
   @JoinColumn()
   content: Content;
@@ -20,7 +23,4 @@ export class Movie extends DefaultEntity<Movie> {
   })
   @JoinColumn()
   thumbnail: Thumbnail;
-
-  @Column({ type: 'float', nullable: true })
-  externalRating: number | null;
 }

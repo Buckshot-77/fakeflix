@@ -1,8 +1,7 @@
 import { DynamicModule, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-
-import { DefaultEntity } from '@contentModule/infra/module/typeorm/entity/default.entity';
-import { TypeOrmMigrationService } from '@contentModule/infra/module/typeorm/service/typeorm-migration.service';
+import { DefaultEntity } from './entity/default.entity';
+import { TypeOrmMigrationService } from './service/typeorm-migration.service';
 import { ConfigModule } from '@sharedModules/config/config.module';
 import { ConfigService } from '@sharedModules/config/service/config.service';
 
