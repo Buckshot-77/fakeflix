@@ -24,10 +24,10 @@ export class UserModel {
   ): UserModel {
     return new UserModel({
       ...data,
-      id: data.id ? data.id : randomUUID(),
-      createdAt: data.createdAt ? data.createdAt : new Date(),
-      updatedAt: data.updatedAt ? data.updatedAt : new Date(),
-      deletedAt: data.deletedAt ? data.deletedAt : null,
+      id: data.id || randomUUID(),
+      createdAt: data.createdAt || new Date(),
+      updatedAt: data.updatedAt || new Date(),
+      deletedAt: data.deletedAt || null,
     });
   }
 

@@ -11,9 +11,6 @@ export interface CreateUserDTO {
   lastName: string;
 }
 
-//TODO move to a configuration
-export const PASSWORD_HASH_SALT = 10;
-
 @Injectable()
 export class UserManagementService {
   constructor(private readonly userRepository: UserRepository) {}
@@ -21,10 +18,9 @@ export class UserManagementService {
     if (!this.validateEmail(user.email)) {
       throw new DomainException(`Invalid email: ${user.email}`);
     }
-    const passwordHash = await argon2.hash(user.password, {
-      salt: PASSWORD_HASH_SALT,
-    });
-    console.log(passwordHash);
+
+    const passwordHash = await argon2.hash(user.password);
+
     const newUser = UserModel.create({
       ...user,
       password: passwordHash,
