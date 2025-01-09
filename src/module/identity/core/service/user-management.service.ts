@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { UserModel } from '@identityModule/core/model/user.model';
 import { UserRepository } from '@identityModule/persistence/repository/user.repository';
-import argon2 from 'argon2';
+import { hash } from 'argon2';
 import { DomainException } from '@sharedLibs/core/exeption/domain.exception';
 
 export interface CreateUserDTO {
@@ -19,7 +19,7 @@ export class UserManagementService {
       throw new DomainException(`Invalid email: ${user.email}`);
     }
 
-    const passwordHash = await argon2.hash(user.password);
+    const passwordHash = await hash(user.password);
 
     const newUser = UserModel.create({
       ...user,

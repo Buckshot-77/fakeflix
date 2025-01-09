@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UserUnauthorizedException } from '@identityModule/core/exception/user-unauthorized.exception';
 import { UserRepository } from '@identityModule/persistence/repository/user.repository';
-import argon2 from 'argon2';
+import { verify } from 'argon2';
 
 // TODO: move this to a .env file and config
 export const jwtConstants = {
@@ -38,6 +38,6 @@ export class AuthService {
     password: string,
     actualPassword: string,
   ): Promise<boolean> {
-    return argon2.verify(password, actualPassword);
+    return verify(password, actualPassword);
   }
 }

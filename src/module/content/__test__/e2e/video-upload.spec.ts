@@ -6,7 +6,7 @@ import { MovieRepository } from '@contentModule/persistence/repository/movie.rep
 import { VideoRepository } from '@contentModule/persistence/repository/video.repository';
 import fs from 'fs';
 import request from 'supertest';
-import nock from 'nock';
+import nock, { cleanAll } from 'nock';
 
 describe('VideoUploadController (e2e)', () => {
   let module: TestingModule;
@@ -38,7 +38,7 @@ describe('VideoUploadController (e2e)', () => {
     await videoRepository.deleteAll();
     await movieRepository.deleteAll();
     await contentRepository.deleteAll();
-    nock.cleanAll();
+    cleanAll();
   });
 
   afterAll(async () => {
