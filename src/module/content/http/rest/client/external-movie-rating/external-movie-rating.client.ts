@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { HttpClient } from '@contentModule/infra/http/client/http.client';
+import { HttpClient } from '@sharedLibs/module/http-client/client/http.client';
 import { ConfigService } from '@sharedModules/config/service/config.service';
 
 interface ApiResponse<T extends Record<string, any>> {
